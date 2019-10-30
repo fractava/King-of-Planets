@@ -5,11 +5,13 @@ class Screen{
 
   }
   void render(){
-    for(int i=0; i < SubScreens.size(); i++){
-        SubScreens.get(i).render();
-    }
+    Collections.sort(Objects, new zIndexComparator());
     for(int i=0; i < Objects.size(); i++){
       Objects.get(i).render();
+    }
+    
+    for(int i=0; i < SubScreens.size(); i++){
+        SubScreens.get(i).render();
     }
   }
   void click(){

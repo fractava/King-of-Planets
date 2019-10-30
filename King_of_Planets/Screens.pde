@@ -2,7 +2,10 @@ class MainScreen extends Screen{
   MainScreen(){
     SubScreens.add(new Sidebar());
     SubScreens.add(new MenuSwitchScreen());
-    Objects.add(new Image(loadImage("Wallpaper.png"),new xP(0),new yP(0),new xP(100), new yP(100)));
+    
+    Object wallpaper = new Image(loadImage("Wallpaper.png"),new xP(0),new yP(0),new xP(100), new yP(100), CORNER);
+    wallpaper.zIndex = 0;
+    Objects.add(wallpaper);
   }
 }
 class Sidebar extends Screen{

@@ -1,3 +1,6 @@
+import java.util.Comparator;
+import java.util.Collections;
+
 Game game = new Game();
 
 void settings(){
@@ -28,4 +31,11 @@ boolean mouseIsInsideBoundingBox(BoundingBox ThisBoundingBox) {
   float highY = Math.max(ThisBoundingBox.y, ThisBoundingBox.y2);
 
   return (mouseX > lowX && mouseX < highX && mouseY > lowY && mouseY < highY && mousePressed);
+}
+
+public class zIndexComparator implements Comparator<Object> {
+    @Override
+    public int compare(Object Object1, Object Object2) {
+        return Object1.zIndex - Object2.zIndex;
+    }
 }
