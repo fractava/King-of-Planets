@@ -7,7 +7,7 @@ class AttackButton extends ImageButton{
   }
   void click(){
     println("Attack !!!");
-    Game.Screens.get(0).switchMenu(1);
+    game.Screens.get(0).SubScreens.get(0).setActiveScreenId(0);
   }
 }
 
@@ -20,7 +20,7 @@ class DeckButton extends ImageButton{
   }
   void click(){
     println("Deck !!!");
-    Game.Screens.get(0).switchMenu(2);
+    game.Screens.get(0).SubScreens.get(0).setActiveScreenId(1);
   }
 }
 
@@ -33,19 +33,19 @@ class SpaceButton extends ImageButton{
   }
   void click(){
     println("Space !!!");
-    Game.Screens.get(0).switchMenu(3);
+    game.Screens.get(0).SubScreens.get(0).setActiveScreenId(2);
   }
 }
 
-class SocialButton extends SocialButton{
+class SocialButton extends ImageButton{
   SocialButton(){
     setPosition(new yP(12.5), new yP(12.5+75));
     setSize(new yP(25), new yP(25));
 
-    setTexture(loadImage("Space.png"));
+    setTexture(loadImage("Social.png"));
   }
   void click(){
-    println("Space !!!");
-    Game.Screens.get(0).switchMenu(3);
+    println("Social !!!");
+    game.Screens.get(0).SubScreens.get(0).setActiveScreenId(3);
   }
 }

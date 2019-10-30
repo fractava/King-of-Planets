@@ -81,7 +81,7 @@ class AttackButton extends ImageButton{
   }
   public void click(){
     println("Attack !!!");
-    Game.Screens.get(0).switchMenu(1);
+    game.Screens.get(0).SubScreens.get(0).setActiveScreenId(0);
   }
 }
 
@@ -94,7 +94,7 @@ class DeckButton extends ImageButton{
   }
   public void click(){
     println("Deck !!!");
-    Game.Screens.get(0).switchMenu(2);
+    game.Screens.get(0).SubScreens.get(0).setActiveScreenId(1);
   }
 }
 
@@ -107,11 +107,11 @@ class SpaceButton extends ImageButton{
   }
   public void click(){
     println("Space !!!");
-    Game.Screens.get(0).switchMenu(3);
+    game.Screens.get(0).SubScreens.get(0).setActiveScreenId(2);
   }
 }
 
-class SocialButton extends SocialButton{
+class SocialButton extends ImageButton{
   SocialButton(){
     setPosition(new yP(12.5f), new yP(12.5f+75));
     setSize(new yP(25), new yP(25));
@@ -120,7 +120,7 @@ class SocialButton extends SocialButton{
   }
   public void click(){
     println("Space !!!");
-    Game.Screens.get(0).switchMenu(3);
+    game.Screens.get(0).SubScreens.get(0).setActiveScreenId(3);
   }
 }
 class Game{
@@ -134,6 +134,9 @@ class Game{
   }
   public void click(){
     Screens.get(currentScreenId).click();
+  }
+  public Screen getScreen(int id){
+    return(Screens.get(id));
   }
 }
 abstract class Object{
@@ -274,13 +277,12 @@ class yP extends RelativeLength{
 class Screen{
   ArrayList<Object> Objects = new ArrayList<Object>();
   ArrayList<Screen> SubScreens = new ArrayList<Screen>();
-  boolean active = true;
   Screen(){
 
   }
   public void render(){
     for(int i=0; i < SubScreens.size(); i++){
-      SubScreens.get(i).render();
+        SubScreens.get(i).render();
     }
     for(int i=0; i < Objects.size(); i++){
       Objects.get(i).render();
@@ -296,32 +298,46 @@ class Screen{
       }
     }
   }
-  public void toggleActive(){
-    active != active;
+  public void setActiveScreenId(int newId){
   }
-  public void setActive(boolean newActive){
-    active = newActive;
+}
+
+class SwitchScreen extends Screen{
+  ArrayList<Screen> SubScreens = new ArrayList<Screen>();
+  int activeScreenId = 0;
+  SwitchScreen(){
+
+  }
+  public void render(){
+    SubScreens.get(activeScreenId).render();
+  }
+  public void click(){
+    SubScreens.get(activeScreenId).click();
+  }
+  public void setActiveScreenId(int newId){
+    activeScreenId = newId;
   }
 }
 class MainScreen extends Screen{
   MainScreen(){
     SubScreens.add(new Sidebar());
-    SubScreens.add(new AttackScreen());
-    SubScreens.add(new DeckScreen());
-    SubScreens.add(new SpaceScreen());
-    SubScreens.add(new SocialScreen());
-  }
-
-  public void switchMenu(int menu){
-    for(int i = 1; i < 5; i++){
-      Subscreens.get(i).setActive(false);
-    }
-    Subscreens.get(menu).setActive(true);
+    SubScreens.add(new MenuSwitchScreen());
   }
 }
 class Sidebar extends Screen{
   Sidebar(){
     Objects.add(new AttackButton());
+    Objects.add(new DeckButton());
+    Objects.add(new SpaceButton());
+    Objects.add(new SocialButton());
+  }
+}
+class MenuSwitchScreen extends SwitchScreen{
+  MenuSwitchScreen(){
+    SubScreens.add(new AttackScreen());
+    SubScreens.add(new DeckScreen());
+    SubScreens.add(new SpaceScreen());
+    SubScreens.add(new SocialScreen());
   }
 }
 class AttackScreen extends Screen{

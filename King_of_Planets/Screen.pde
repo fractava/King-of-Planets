@@ -1,13 +1,12 @@
 class Screen{
   ArrayList<Object> Objects = new ArrayList<Object>();
   ArrayList<Screen> SubScreens = new ArrayList<Screen>();
-  boolean active = true;
   Screen(){
 
   }
   void render(){
     for(int i=0; i < SubScreens.size(); i++){
-      SubScreens.get(i).render();
+        SubScreens.get(i).render();
     }
     for(int i=0; i < Objects.size(); i++){
       Objects.get(i).render();
@@ -23,10 +22,23 @@ class Screen{
       }
     }
   }
-  void toggleActive(){
-    active != active;
+  void setActiveScreenId(int newId){
   }
-  void setActive(boolean newActive){
-    active = newActive;
+}
+
+class SwitchScreen extends Screen{
+  ArrayList<Screen> SubScreens = new ArrayList<Screen>();
+  int activeScreenId = 0;
+  SwitchScreen(){
+
+  }
+  void render(){
+    SubScreens.get(activeScreenId).render();
+  }
+  void click(){
+    SubScreens.get(activeScreenId).click();
+  }
+  void setActiveScreenId(int newId){
+    activeScreenId = newId;
   }
 }

@@ -10,4 +10,7 @@ class Game{
   void click(){
     Screens.get(currentScreenId).click();
   }
+  Screen getScreen(int id){
+    return(Screens.get(id));
+  }
 }
