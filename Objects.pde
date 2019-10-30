@@ -43,19 +43,11 @@ class Image extends Object{
   }
 }
 
-class Button extends Object{
+abstract class Button extends Object{
   RelativeLength x;
   RelativeLength y;
   RelativeLength width;
   RelativeLength height;
-  String text = "";
-
-  color backgroundColor = #ffffff;
-  color strokeColor = #ffffff;
-  color textColor = #000000;
-  int textSize = 30;
-  int textAlignX = CENTER;
-  int textAlignY = CENTER;
 
   void setSize(RelativeLength newWidth, RelativeLength newHeight){
     width = newWidth;
@@ -65,6 +57,23 @@ class Button extends Object{
     x = newX;
     y = newY;
   }
+
+  BoundingBox getBoundingBox(){
+    return new BoundingBoxCenter(x.length(),y.length(),width.length(),height.length());
+  }
+}
+
+class TextButton extends Button{
+  String text = "";
+
+  color backgroundColor = #ffffff;
+  color strokeColor = #ffffff;
+  color textColor = #000000;
+  int textSize = 30;
+  int textAlignX = CENTER;
+  int textAlignY = CENTER;
+
+
   void setText(String newText){
     text = newText;
   }
@@ -82,7 +91,16 @@ class Button extends Object{
     textSize(textSize);
     text(text,x.length(),y.length());
   }
-  BoundingBox getBoundingBox(){
-    return new BoundingBoxCenter(x.length(),y.length(),width.length(),height.length());
+}
+
+class ImageButton extends Button{
+  PImage texture;
+
+  void setTexture(PImage newTexture){
+    texture = newTexture;
+  }
+
+  void render(){
+    image(texture,x.length(),y.length(),width.length(),height.length());
   }
 }
