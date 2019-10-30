@@ -7,7 +7,7 @@ class AttackButton extends ImageButton{
   }
   void click(){
     println("Attack !!!");
-    game.Screens.get(0).SubScreens.get(0).setActiveScreenId(0);
+    game.Screens.get(0).SubScreens.get(1).setActiveScreenId(0);
   }
 }
 
@@ -20,7 +20,7 @@ class DeckButton extends ImageButton{
   }
   void click(){
     println("Deck !!!");
-    game.Screens.get(0).SubScreens.get(0).setActiveScreenId(1);
+    game.Screens.get(0).SubScreens.get(1).setActiveScreenId(1);
   }
 }
 
@@ -33,7 +33,7 @@ class SpaceButton extends ImageButton{
   }
   void click(){
     println("Space !!!");
-    game.Screens.get(0).SubScreens.get(0).setActiveScreenId(2);
+    game.Screens.get(0).SubScreens.get(1).setActiveScreenId(2);
   }
 }
 
@@ -46,6 +46,16 @@ class SocialButton extends ImageButton{
   }
   void click(){
     println("Social !!!");
-    game.Screens.get(0).SubScreens.get(0).setActiveScreenId(3);
+    game.Screens.get(0).SubScreens.get(1).setActiveScreenId(3);
+  }
+}
+
+
+
+class AttackFightButton extends TextButton{
+  AttackFightButton(){
+      setPosition(new AddRelativeLength(new xP(50), new yP(12.5)), new yP(50+50*2/3));
+      setSize(new yP(50), new yP(12.5));
+      setText("FIGHT!");
   }
 }

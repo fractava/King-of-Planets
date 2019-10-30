@@ -21,3 +21,31 @@ class yP extends RelativeLength{
     return(int(height*percent*0.01));
   }
 }
+
+class AddRelativeLength extends RelativeLength{
+  RelativeLength RelativeLength1;
+  RelativeLength RelativeLength2;
+
+  AddRelativeLength(RelativeLength newRelativeLength1,RelativeLength newRelativeLength2){
+    RelativeLength1 = newRelativeLength1;
+    RelativeLength2 = newRelativeLength2;
+  }
+
+  int length(){
+    return(RelativeLength1.length()+RelativeLength2.length());
+  }
+}
+
+class SubtractRelativeLength extends RelativeLength{
+  RelativeLength RelativeLength1;
+  RelativeLength RelativeLength2;
+
+  SubtractRelativeLength(RelativeLength newRelativeLength1,RelativeLength newRelativeLength2){
+    RelativeLength1 = newRelativeLength1;
+    RelativeLength2 = newRelativeLength2;
+  }
+
+  int length(){
+    return(RelativeLength1.length()-RelativeLength2.length());
+  }
+}

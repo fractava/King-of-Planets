@@ -9,7 +9,7 @@ class Screen{
     for(int i=0; i < Objects.size(); i++){
       Objects.get(i).render();
     }
-    
+
     for(int i=0; i < SubScreens.size(); i++){
         SubScreens.get(i).render();
     }
@@ -25,6 +25,7 @@ class Screen{
     }
   }
   void setActiveScreenId(int newId){
+    println("ERROR! This should not have been called!");
   }
 }
 
