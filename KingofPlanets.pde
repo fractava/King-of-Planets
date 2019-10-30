@@ -13,3 +13,16 @@ void setup(){
 void draw(){
   game.loop();
 }
+void mousePressed(){
+  game.click();
+}
+
+boolean mouseIsInsideBoundingBox(BoundingBox ThisBoundingBox) {
+
+  float lowX = Math.min(ThisBoundingBox.x, ThisBoundingBox.x2);
+  float lowY = Math.min(ThisBoundingBox.y, ThisBoundingBox.y2);
+  float highX = Math.max(ThisBoundingBox.x, ThisBoundingBox.x2);
+  float highY = Math.max(ThisBoundingBox.y, ThisBoundingBox.y2);
+
+  return (mouseX > lowX && mouseX < highX && mouseY > lowY && mouseY < highY && mousePressed);
+}

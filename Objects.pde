@@ -5,6 +5,7 @@ class Image extends Object{
   RelativeLength width;
   RelativeLength height;
   int imageMode = CENTER;
+
   Image(PImage newImage, RelativeLength newX, RelativeLength newY, RelativeLength newWidth, RelativeLength newHeight, int... newImageMode){
     setImage(newImage);
     setPosition(newX, newY);
@@ -36,20 +37,26 @@ class Image extends Object{
       return new BoundingBoxCenter(x.length(),y.length(),width.length(),height.length());
     }else if(imageMode == CORNER){
       return new BoundingBoxCorner(x.length(),y.length(),width.length(),height.length());
+    }else{
+      return new BoundingBoxCorners(0,0,0,0);
     }
   }
 }
 
-abstract class Button extends Object{
+class Button extends Object{
   RelativeLength x;
   RelativeLength y;
   RelativeLength width;
   RelativeLength height;
+  String text = "";
 
-  Button(RelativeLength newX, RelativeLength newY, RelativeLength newWidth, RelativeLength newHeight){
-    setPosition(newX, newY);
-    setSize(newWidth, newHeight);
-  }
+  color backgroundColor = #ffffff;
+  color strokeColor = #ffffff;
+  color textColor = #000000;
+  int textSize = 30;
+  int textAlignX = CENTER;
+  int textAlignY = CENTER;
+
   void setSize(RelativeLength newWidth, RelativeLength newHeight){
     width = newWidth;
     height = newHeight;
@@ -57,6 +64,23 @@ abstract class Button extends Object{
   void setPosition(RelativeLength newX, RelativeLength newY){
     x = newX;
     y = newY;
+  }
+  void setText(String newText){
+    text = newText;
+  }
+  void render(){
+    fill(backgroundColor);
+    stroke(strokeColor);
+    rectMode(CENTER);
+    rect(x.length(),y.length(),width.length(),height.length());
+    renderText();
+  }
+  void renderText(){
+    stroke(textColor);
+    fill(textColor);
+    textAlign(textAlignX,textAlignY);
+    textSize(textSize);
+    text(text,x.length(),y.length());
   }
   BoundingBox getBoundingBox(){
     return new BoundingBoxCenter(x.length(),y.length(),width.length(),height.length());

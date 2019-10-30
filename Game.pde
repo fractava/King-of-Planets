@@ -7,4 +7,7 @@ class Game{
   void loop(){
     Screens.get(currentScreenId).render();
   }
+  void click(){
+    Screens.get(currentScreenId).click();
+  }
 }
