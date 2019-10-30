@@ -15,6 +15,7 @@ class TestButton2 extends TextButton{
     setText("test 2");
 
     backgroundColor = #000000;
+    textColor = #ffffff;
   }
   void click(){
     println("test Button 2 clicked");
