@@ -1,6 +1,7 @@
 class Screen{
   ArrayList<Object> Objects = new ArrayList<Object>();
   ArrayList<Screen> SubScreens = new ArrayList<Screen>();
+  boolean active = true;
   Screen(){
 
   }
@@ -21,5 +22,11 @@ class Screen{
         Objects.get(i).click();
       }
     }
+  }
+  void toggleActive(){
+    active != active;
+  }
+  void setActive(boolean newActive){
+    active = newActive;
   }
 }
