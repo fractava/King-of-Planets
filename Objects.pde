@@ -101,6 +101,7 @@ class ImageButton extends Button{
   }
 
   void render(){
+    imageMode(CENTER);
     image(texture,x.length(),y.length(),width.length(),height.length());
   }
 }

@@ -5,9 +5,12 @@ void settings(){
   int width = int(1920*windowScale);
   int height = int(1080*windowScale);
   size(width,height,P2D);
+  noSmooth();
 }
 void setup(){
   surface.setResizable(true);
+  hint(DISABLE_TEXTURE_MIPMAPS);
+  ((PGraphicsOpenGL)g).textureSampling(3);
   game.init();
 }
 void draw(){
