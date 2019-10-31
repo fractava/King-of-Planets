@@ -33,6 +33,12 @@ class AttackScreen extends Screen{
 }
 class DeckScreen extends Screen{
   DeckScreen(){
+    Objects.add(new DeckAdmiralOculusButton());
+    Objects.add(new DeckAshasButton());
+    Objects.add(new DeckAthonButton());
+    Objects.add(new DeckBuracButton());
+    Objects.add(new DeckKineticButton());
+    Objects.add(new DeckVrachosButton());
   }
 }
 class SpaceScreen extends Screen{

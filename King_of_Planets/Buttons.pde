@@ -69,3 +69,75 @@ class AttackFightButton extends TextButton{
     game.currentScreenId = 1;
   }
 }
+
+class DeckAdmiralOculusButton extends ImageButton{
+  DeckAdmiralOculusButton(){
+    setPosition(new AddRelativeLength(new AddRelativeLength(new xP(50), new xP(12.5)),new yP(100/6-100/24-100/6*4)), new yP(50));
+    setSize(new yP(100/6), new yP(100/6));
+
+    setTexture(loadImage("Admiral Oculus.png"));
+  }
+  void click(){
+    game.selectedHero = 0;
+  }
+}
+
+class DeckAshasButton extends ImageButton{
+  DeckAshasButton(){
+    setPosition(new AddRelativeLength(new AddRelativeLength(new xP(50), new xP(12.5)),new yP(100/6-100/24-100/6*3)), new yP(50));
+    setSize(new yP(100/6), new yP(100/6));
+
+    setTexture(loadImage("Ashas.png"));
+  }
+  void click(){
+    game.selectedHero = 1;
+  }
+}
+
+class DeckAthonButton extends ImageButton{
+  DeckAthonButton(){
+    setPosition(new AddRelativeLength(new AddRelativeLength(new xP(50), new xP(12.5)),new yP(100/6-100/24-100/6*2)), new yP(50));
+    setSize(new yP(100/6), new yP(100/6));
+
+    setTexture(loadImage("Athon.png"));
+  }
+  void click(){
+    game.selectedHero = 2;
+  }
+}
+
+class DeckBuracButton extends ImageButton{
+  DeckBuracButton(){
+    setPosition(new AddRelativeLength(new AddRelativeLength(new xP(50), new xP(12.5)),new yP(100/6-100/24-100/6*1)), new yP(50));
+    setSize(new yP(100/6), new yP(100/6));
+
+    setTexture(loadImage("Burac.png"));
+  }
+  void click(){
+    game.selectedHero = 3;
+  }
+}
+
+class DeckKineticButton extends ImageButton{
+  DeckKineticButton(){
+    setPosition(new AddRelativeLength(new AddRelativeLength(new xP(50), new xP(12.5)),new yP(100/6-100/24-100/6*0)), new yP(50));
+    setSize(new yP(100/6), new yP(100/6));
+
+    setTexture(loadImage("Kinetic.png"));
+  }
+  void click(){
+    game.selectedHero = 4;
+  }
+}
+
+class DeckVrachosButton extends ImageButton{
+  DeckVrachosButton(){
+    setPosition(new AddRelativeLength(new AddRelativeLength(new xP(50), new xP(12.5)),new yP(100/6-100/24-100/6*(-1))), new yP(50));
+    setSize(new yP(100/6), new yP(100/6));
+
+    setTexture(loadImage("Vrachos.png"));
+  }
+  void click(){
+    game.selectedHero = 5;
+  }
+}

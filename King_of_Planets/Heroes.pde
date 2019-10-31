@@ -12,7 +12,7 @@ class Admiral_Oculus extends Hero{
   }
 
   void first(){
-    game.match.entities.add(new Admiral_Oculus_Shot(teamId, position, direction));
+    entities.add(new Admiral_Oculus_Shot(game.match.playerId, teamId, position, direction));
     lastFirst = frameCount;
   }
 }
@@ -23,9 +23,16 @@ class Ashas extends Hero{
     position = new PVector(startX, startY);
     cover = loadImage("Ashas.png");
     skin = loadImage("Ashas Top.png");
-    speed = 2;
+    speed = 1.4;
+    coolDown = 32;
     maxHealth = 200;
     health = maxHealth;
+  }
+
+  void first(){
+    PVector firePosition = new PVector(position.x+direction.setMag(12).x, position.y+direction.setMag(16).y);
+    entities.add(new Ashas_Fire(game.match.playerId, teamId, firePosition, direction));
+    lastFirst = frameCount;
   }
 }
 
@@ -35,9 +42,15 @@ class Athon extends Hero{
     position = new PVector(startX, startY);
     cover = loadImage("Athon.png");
     skin = loadImage("Athon Top.png");
-    speed = 2;
+    speed = 1.6;
+    coolDown = 12;
     maxHealth = 200;
     health = maxHealth;
+  }
+
+  void first(){
+    entities.add(new Athon_Orb(game.match.playerId, teamId, position, direction));
+    lastFirst = frameCount;
   }
 }
 
@@ -78,7 +91,7 @@ class Vrachos extends Hero{
   }
 
   void first(){
-    game.match.entities.add(new Vrachos_Shot(teamId, position, direction));
+    entities.add(new Vrachos_Shot(game.match.playerId, teamId, position, direction));
     lastFirst = frameCount;
   }
 }

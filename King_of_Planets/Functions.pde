@@ -77,7 +77,7 @@ boolean rectInRect(float r1x, float r1y, float r1w, float r1h, float r2x, float 
   if(r1x+r1w/2 <= r2x+r2w/2 &&
     r1x-r1w/2 >= r2x-r2w/2 &&
     r1y+r1h/2 <= r2y+r2h/2 &&
-    r2y-r2h/2 >= r2y-r2h/2){
+    r1y-r1w/2 >= r2y-r2h/2){
       return true;
     }
   return false;

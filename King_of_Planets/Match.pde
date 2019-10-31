@@ -1,14 +1,13 @@
 class Match{
   Map currentMap;
   Hero[] players = new Hero[6];
-  ArrayList<Entity> entities = new ArrayList<Entity>();
   int playerId = 0;
   boolean[] controls = new boolean[4];
 
   Match(Map newMap){
     currentMap = newMap;
     for(int i = 0; i < 3; i ++){
-      players[i] = new Vrachos(0,0,0);
+      players[i] = new Ashas(0,0,0);
       players[i].spawn();
     }
     for(int i = 3; i < 6; i ++){
@@ -21,9 +20,6 @@ class Match{
     for(int i = 0; i < 6; i++){
       players[i].update();
     }
-    for(int i = 0; i < entities.size(); i++){
-      entities.get(i).update();
-    }
     players[playerId].control();
   }
 
@@ -34,9 +30,6 @@ class Match{
     scale(height/64);
     translate(-players[playerId].position.x, -players[playerId].position.y);
     currentMap.show();
-    for(int i = 0; i < entities.size(); i++){
-      entities.get(i).show();
-    }
     for(int i = 0; i < 6; i++){
       players[i].show();
     }

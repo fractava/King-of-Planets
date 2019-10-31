@@ -3,6 +3,7 @@ class Game{
   int currentScreenId = 0;
 
   int planet = 0;
+  int selectedHero = 0;
 
   Match match;
 

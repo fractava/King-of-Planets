@@ -11,10 +11,17 @@ class Hero{
   float speed;
   int maxHealth;
   int health;
+  ArrayList<Entity> entities = new ArrayList<Entity>();
 
   void update(){
+    for(int i = 0; i < entities.size(); i++){
+      entities.get(i).update();
+    }
     if(health >= 0){
       die();
+    }
+    if(health > maxHealth){
+      health = maxHealth;
     }
   }
 
@@ -76,6 +83,9 @@ class Hero{
   }
 
   void show(){
+    for(int i = 0; i < entities.size(); i++){
+      entities.get(i).show();
+    }
     pushMatrix();
     pushStyle();
     rectMode(CENTER);
