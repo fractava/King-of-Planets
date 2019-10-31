@@ -24,6 +24,8 @@ class Ashas extends Hero{
     cover = loadImage("Ashas.png");
     skin = loadImage("Ashas Top.png");
     speed = 1.4;
+    w = 10;
+    h = 10;
     coolDown = 32;
     maxHealth = 200;
     health = maxHealth;
@@ -80,7 +82,6 @@ class Kinetic extends Hero{
 
 class Vrachos extends Hero{
   Vrachos(int newTeamId, float startX, float startY){
-    teamId = newTeamId;
     position = new PVector(startX, startY);
     cover = loadImage("Vrachos.png");
     skin = loadImage("Vrachos Top.png");

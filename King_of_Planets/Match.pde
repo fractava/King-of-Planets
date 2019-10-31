@@ -1,17 +1,17 @@
 class Match{
   Map currentMap;
   Hero[] players = new Hero[6];
-  int playerId = 0;
+  int playerId = 4;
   boolean[] controls = new boolean[4];
 
   Match(Map newMap){
     currentMap = newMap;
     for(int i = 0; i < 3; i ++){
-      players[i] = new Ashas(0,0,0);
+      players[i] = new Vrachos(0,0,0);
       players[i].spawn();
     }
     for(int i = 3; i < 6; i ++){
-      players[i] = new Vrachos(1,0,0);
+      players[i] = new Ashas(1,0,0);
       players[i].spawn();
     }
   }
