@@ -50,6 +50,7 @@ class Ingame extends Screen{
   }
 
   void render(){
+    game.match.update();
     game.match.render();
 
     for(int i = 0; i < Objects.size(); i++){
