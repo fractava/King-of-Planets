@@ -4,6 +4,8 @@ class Game{
 
   int planet = 0;
 
+  Match match;
+
   void init(){
     Screens.add(new MainScreen());
     PFont font;
@@ -15,6 +17,12 @@ class Game{
   }
   void click(){
     Screens.get(currentScreenId).click();
+  }
+  void keyPressed(){
+    Screens.get(currentScreenId).keyPressed();
+  }
+  void keyReleased(){
+    Screens.get(currentScreenId).keyReleased();
   }
   Screen getScreen(int id){
     return(Screens.get(id));

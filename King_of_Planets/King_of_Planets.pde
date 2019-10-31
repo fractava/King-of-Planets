@@ -8,19 +8,25 @@ void settings(){
   int width = int(1920*windowScale);
   int height = int(1080*windowScale);
   size(width,height,P2D);
-  noSmooth();
 }
 void setup(){
   surface.setResizable(true);
   hint(DISABLE_TEXTURE_MIPMAPS);
   ((PGraphicsOpenGL)g).textureSampling(3);
+  frameRate(30);
   game.init();
 }
 void draw(){
   game.loop();
 }
-void mousePressed(){
+void mouseReleased(){
   game.click();
+}
+void keyPressed(){
+  game.keyPressed();
+}
+void keyReleased(){
+  game.keyReleased();
 }
 
 boolean mouseIsInsideBoundingBox(BoundingBox ThisBoundingBox) {
@@ -30,7 +36,7 @@ boolean mouseIsInsideBoundingBox(BoundingBox ThisBoundingBox) {
   float highX = Math.max(ThisBoundingBox.x, ThisBoundingBox.x2);
   float highY = Math.max(ThisBoundingBox.y, ThisBoundingBox.y2);
 
-  return (mouseX > lowX && mouseX < highX && mouseY > lowY && mouseY < highY && mousePressed);
+  return (mouseX > lowX && mouseX < highX && mouseY > lowY && mouseY < highY);
 }
 
 public class zIndexComparator implements Comparator<Object> {

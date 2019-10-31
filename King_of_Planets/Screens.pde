@@ -6,6 +6,7 @@ class MainScreen extends Screen{
     Object wallpaper = new Image(loadImage("Wallpaper.png"),new xP(0),new yP(0),new xP(100), new yP(100), CORNER);
     wallpaper.zIndex = 0;
     Objects.add(wallpaper);
+    Objects.add(new Rect(color(#272847),new xP(0), new yP(0), new yP(25), new yP(100), CORNER));
   }
 }
 class Sidebar extends Screen{
@@ -40,5 +41,53 @@ class SpaceScreen extends Screen{
 }
 class SocialScreen extends Screen{
   SocialScreen(){
+  }
+}
+
+class Ingame extends Screen{
+  Ingame(){
+    Objects.add(new Image(game.match.players[game.match.playerId].cover, new yP(100/16), new yP(100-100/16), new yP(100/8), new yP(100/8)));
+  }
+
+  void render(){
+    game.match.render();
+
+    for(int i = 0; i < Objects.size(); i++){
+      Objects.get(i).render();
+    }
+  }
+
+  void keyPressed(){
+    switch(key){
+      case 'w':
+        game.match.controls[0] = true;
+        break;
+      case 'a':
+        game.match.controls[1] = true;
+        break;
+      case 's':
+        game.match.controls[2] = true;
+        break;
+      case 'd':
+        game.match.controls[3] = true;
+        break;
+    }
+  }
+
+  void keyReleased(){
+    switch(key){
+      case 'w':
+        game.match.controls[0] = false;
+        break;
+      case 'a':
+        game.match.controls[1] = false;
+        break;
+      case 's':
+        game.match.controls[2] = false;
+        break;
+      case 'd':
+        game.match.controls[3] = false;
+        break;
+    }
   }
 }

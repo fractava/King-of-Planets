@@ -24,6 +24,16 @@ class Screen{
       }
     }
   }
+  void keyPressed(){
+    for(int i=0; i < SubScreens.size(); i++){
+      SubScreens.get(i).keyPressed();
+    }
+  }
+  void keyReleased(){
+    for(int i=0; i < SubScreens.size(); i++){
+      SubScreens.get(i).keyReleased();
+    }
+  }
   void setActiveScreenId(int newId){
     println("ERROR! This should not have been called!");
   }

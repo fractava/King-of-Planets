@@ -43,11 +43,63 @@ class Image extends Object{
   }
 }
 
+class Rect extends Object{
+  color fillColor = #ffffff;
+  RelativeLength x;
+  RelativeLength y;
+  RelativeLength width;
+  RelativeLength height;
+  int rectMode = CENTER;
+
+  Rect(color newFillColor , RelativeLength newX, RelativeLength newY, RelativeLength newWidth, RelativeLength newHeight, int... newRectMode){
+    setPosition(newX, newY);
+    setSize(newWidth, newHeight);
+    setFillColor(newFillColor);
+    if(newRectMode.length > 0){
+      setRectMode(newRectMode[0]);
+    }
+  }
+  void setFillColor(color newFillColor){
+    fillColor = newFillColor;
+  }
+  void setPosition(RelativeLength newX, RelativeLength newY){
+    x = newX;
+    y = newY;
+  }
+  void setRectMode(int newRectMode){
+    rectMode = newRectMode;
+  }
+  void setSize(RelativeLength newWidth, RelativeLength newHeight){
+    width = newWidth;
+    height = newHeight;
+  }
+  void render(){
+    pushStyle();
+    rectMode(rectMode);
+    fill(fillColor);
+    noStroke();
+    rect(x.length(),y.length(),width.length(),height.length());
+    popStyle();
+  }
+  BoundingBox getBoundingBox(){
+    if(rectMode == CENTER){
+      return new BoundingBoxCenter(x.length(),y.length(),width.length(),height.length());
+    }else if(rectMode == CORNER){
+      return new BoundingBoxCorner(x.length(),y.length(),width.length(),height.length());
+    }else if(rectMode == CORNERS){
+      return new BoundingBoxCorners(x.length(),y.length(),x.length()+width.length(),y.length()+height.length());
+    }else{
+      return new BoundingBoxCorners(0,0,0,0);
+    }
+  }
+}
+
 abstract class Button extends Object{
   RelativeLength x;
   RelativeLength y;
   RelativeLength width;
   RelativeLength height;
+  boolean hoverable = false;
 
   void setSize(RelativeLength newWidth, RelativeLength newHeight){
     width = newWidth;
@@ -56,6 +108,11 @@ abstract class Button extends Object{
   void setPosition(RelativeLength newX, RelativeLength newY){
     x = newX;
     y = newY;
+  }
+
+
+  void setHoverable(boolean newHoverable){
+    hoverable = newHoverable;
   }
 
   BoundingBox getBoundingBox(){
@@ -103,5 +160,16 @@ class ImageButton extends Button{
   void render(){
     imageMode(CENTER);
     image(texture,x.length(),y.length(),width.length(),height.length());
+
+    if(hoverable){
+      if(mouseIsInsideBoundingBox(getBoundingBox())){
+        pushStyle();
+        noFill();
+        strokeWeight(4);
+        stroke(#FFFFFF);
+        rect(x.length(),y.length(),width.length(),height.length());
+        popStyle();
+      }
+    }
   }
 }
