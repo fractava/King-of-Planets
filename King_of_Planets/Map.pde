@@ -1,6 +1,5 @@
 abstract class Map{
   int x, y;
-  int width, height;
   PImage backgroundImage;
   ArrayList<Obstacle> obstacles = new ArrayList<Obstacle>();
 
@@ -27,6 +26,8 @@ class Industry extends Map{
 
     obstacles.add(new Obstacle(32,0,8,48, #696969));
     obstacles.add(new Obstacle(-32,0,8,48, #696969));
+    obstacles.add(new Obstacle(-128+32,0,8,32, #696969));
+    obstacles.add(new Obstacle(128-32,0,8,32, #696969));
   }
 
   void show(){

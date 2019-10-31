@@ -45,6 +45,8 @@ class Athon extends Hero{
     cover = loadImage("Athon.png");
     skin = loadImage("Athon Top.png");
     speed = 1.6;
+    w = 10;
+    h = 10;
     coolDown = 12;
     maxHealth = 200;
     health = maxHealth;
@@ -62,9 +64,17 @@ class Burac extends Hero{
     position = new PVector(startX, startY);
     cover = loadImage("Burac.png");
     skin = loadImage("Burac Top.png");
-    speed = 2;
+    speed = 1.4;
+    w = 10;
+    h = 10;
+    coolDown = 36;
     maxHealth = 250;
     health = maxHealth;
+  }
+
+  void first(){
+    entities.add(new Burac_Fire(game.match.playerId, teamId, position));
+    lastFirst = frameCount;
   }
 }
 
@@ -75,13 +85,20 @@ class Kinetic extends Hero{
     cover = loadImage("Kinetic.png");
     skin = loadImage("Kinetic Top.png");
     speed = 2.6;
+    coolDown = 10;
     maxHealth = 200;
     health = maxHealth;
+  }
+
+  void first(){
+    entities.add(new Kinetic_Shot(game.match.playerId, teamId, position, direction));
+    lastFirst = frameCount;
   }
 }
 
 class Vrachos extends Hero{
   Vrachos(int newTeamId, float startX, float startY){
+    teamId = newTeamId;
     position = new PVector(startX, startY);
     cover = loadImage("Vrachos.png");
     skin = loadImage("Vrachos Top.png");
