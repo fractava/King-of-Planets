@@ -49,3 +49,31 @@ class SubtractRelativeLength extends RelativeLength{
     return(RelativeLength1.length()-RelativeLength2.length());
   }
 }
+
+class MultiplyRelativeLength extends RelativeLength{
+  RelativeLength RelativeLength1;
+  float factor;
+
+  MultiplyRelativeLength(RelativeLength newRelativeLength1, float newFactor){
+    RelativeLength1 = newRelativeLength1;
+    factor = newFactor;
+  }
+
+  int length(){
+    return(int(RelativeLength1.length()*factor));
+  }
+}
+
+class DevideRelativeLength extends RelativeLength{
+  RelativeLength RelativeLength1;
+  float divisor;
+
+  DevideRelativeLength(RelativeLength newRelativeLength1,float newDivisor){
+    RelativeLength1 = newRelativeLength1;
+    divisor = newDivisor;
+  }
+
+  int length(){
+    return(int(RelativeLength1.length()/divisor));
+  }
+}

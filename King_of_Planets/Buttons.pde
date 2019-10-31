@@ -72,7 +72,7 @@ class AttackFightButton extends TextButton{
 
 class DeckAdmiralOculusButton extends ImageButton{
   DeckAdmiralOculusButton(){
-    setPosition(new AddRelativeLength(new AddRelativeLength(new xP(50), new xP(12.5)),new yP(100/6-100/24-100/6*4)), new yP(50));
+    setPosition(new AddRelativeLength(new DevideRelativeLength(new AddRelativeLength(new xP(100), new yP(25)), 2), new yP(-100/12 - 100/6*2)), new yP(50));
     setSize(new yP(100/6), new yP(100/6));
 
     setTexture(loadImage("Admiral Oculus.png"));
@@ -84,7 +84,7 @@ class DeckAdmiralOculusButton extends ImageButton{
 
 class DeckAshasButton extends ImageButton{
   DeckAshasButton(){
-    setPosition(new AddRelativeLength(new AddRelativeLength(new xP(50), new xP(12.5)),new yP(100/6-100/24-100/6*3)), new yP(50));
+    setPosition(new AddRelativeLength(new DevideRelativeLength(new AddRelativeLength(new xP(100), new yP(25)), 2), new yP(-100/12 - 100/6)), new yP(50));
     setSize(new yP(100/6), new yP(100/6));
 
     setTexture(loadImage("Ashas.png"));
@@ -96,7 +96,7 @@ class DeckAshasButton extends ImageButton{
 
 class DeckAthonButton extends ImageButton{
   DeckAthonButton(){
-    setPosition(new AddRelativeLength(new AddRelativeLength(new xP(50), new xP(12.5)),new yP(100/6-100/24-100/6*2)), new yP(50));
+    setPosition(new AddRelativeLength(new DevideRelativeLength(new AddRelativeLength(new xP(100), new yP(25)), 2), new yP(-100/12)), new yP(50));
     setSize(new yP(100/6), new yP(100/6));
 
     setTexture(loadImage("Athon.png"));
@@ -108,7 +108,7 @@ class DeckAthonButton extends ImageButton{
 
 class DeckBuracButton extends ImageButton{
   DeckBuracButton(){
-    setPosition(new AddRelativeLength(new AddRelativeLength(new xP(50), new xP(12.5)),new yP(100/6-100/24-100/6*1)), new yP(50));
+    setPosition(new AddRelativeLength(new DevideRelativeLength(new AddRelativeLength(new xP(100), new yP(25)), 2), new yP(+100/12)), new yP(50));
     setSize(new yP(100/6), new yP(100/6));
 
     setTexture(loadImage("Burac.png"));
@@ -120,7 +120,7 @@ class DeckBuracButton extends ImageButton{
 
 class DeckKineticButton extends ImageButton{
   DeckKineticButton(){
-    setPosition(new AddRelativeLength(new AddRelativeLength(new xP(50), new xP(12.5)),new yP(100/6-100/24-100/6*0)), new yP(50));
+    setPosition(new AddRelativeLength(new DevideRelativeLength(new AddRelativeLength(new xP(100), new yP(25)), 2), new yP(+100/12 + 100/6)), new yP(50));
     setSize(new yP(100/6), new yP(100/6));
 
     setTexture(loadImage("Kinetic.png"));
@@ -132,7 +132,7 @@ class DeckKineticButton extends ImageButton{
 
 class DeckVrachosButton extends ImageButton{
   DeckVrachosButton(){
-    setPosition(new AddRelativeLength(new AddRelativeLength(new xP(50), new xP(12.5)),new yP(100/6-100/24-100/6*(-1))), new yP(50));
+    setPosition(new AddRelativeLength(new DevideRelativeLength(new AddRelativeLength(new xP(100), new yP(25)), 2), new yP(+100/12 + 100/6*2)), new yP(50));
     setSize(new yP(100/6), new yP(100/6));
 
     setTexture(loadImage("Vrachos.png"));
