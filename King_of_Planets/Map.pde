@@ -16,18 +16,26 @@ abstract class Map{
     }
     return false;
   }
+
+  void loadJSON(String path){
+    JSONObject json = loadJSONObject(path);
+
+    width = json.getInt("width");
+    height = json.getInt("height");
+
+    for(int i = 0; i < json.getJSONArray("obstacles").size(); i++){
+      JSONObject obstacle = json.getJSONArray("obstacles").getJSONObject(i);
+
+      obstacles.add(new Obstacle(obstacle.getInt("x"), obstacle.getInt("y"), obstacle.getInt("width"), obstacle.getInt("height"), unhex("FF" + obstacle.getString("color"))));
+    }
+
+    backgroundImage = loadImage(json.getString("backgroundImage"));
+  }
 }
 
 class Industry extends Map{
   Industry(){
-    width = 256;
-    height = 128;
-    backgroundImage = loadImage("Industry.png");
-
-    obstacles.add(new Obstacle(32,0,8,48, #696969));
-    obstacles.add(new Obstacle(-32,0,8,48, #696969));
-    obstacles.add(new Obstacle(-128+32,0,8,32, #696969));
-    obstacles.add(new Obstacle(128-32,0,8,32, #696969));
+    loadJSON("industry.map.json");
   }
 
   void show(){

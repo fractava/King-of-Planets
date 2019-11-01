@@ -8,7 +8,7 @@ class Match{
   Match(Map newMap){
     currentMap = newMap;
     for(int i = 0; i < 3; i ++){
-      players[i] = new Kinetic(0,0,0);
+      players[i] = new Athon(0,0,0);
       players[i].spawn();
     }
     for(int i = 3; i < 6; i ++){

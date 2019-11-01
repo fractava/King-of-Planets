@@ -126,13 +126,16 @@ class TextButton extends Button{
   color backgroundColor = #ffffff;
   color strokeColor = #ffffff;
   color textColor = #000000;
-  int textSize = 30;
+  RelativeLength textSize = new yP(10);
   int textAlignX = CENTER;
   int textAlignY = CENTER;
 
 
   void setText(String newText){
     text = newText;
+  }
+  void setTextSize(RelativeLength newTextSize){
+    textSize = newTextSize;
   }
   void render(){
     fill(backgroundColor);
@@ -145,7 +148,7 @@ class TextButton extends Button{
     stroke(textColor);
     fill(textColor);
     textAlign(textAlignX,textAlignY);
-    textSize(textSize);
+    textSize(textSize.length());
     text(text,x.length(),y.length());
   }
 }

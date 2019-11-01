@@ -111,8 +111,8 @@ class Athon_Orb extends Entity{
 
     for(int i = teamId*3; i < 3+teamId*3; i++){
       if(i != ownerId && rectRect(position.x, position.y, 2, 2, game.match.players[i].position.x, game.match.players[i].position.y, game.match.players[i].w, game.match.players[i].h)){
-        game.match.players[i].addHealth(15);
-        game.match.players[ownerId].addHealth(5);
+        game.match.players[i].addHealth(30);
+        game.match.players[ownerId].addHealth(15);
         game.match.players[ownerId].entities.remove(this);
       }
     }

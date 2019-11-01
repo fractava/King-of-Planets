@@ -72,7 +72,7 @@ boolean rectRect(float r1x, float r1y, float r1w, float r1h, float r2x, float r2
 
 boolean rectInRect(float r1x, float r1y, float r1w, float r1h, float r2x, float r2y, float r2w, float r2h) {
 
-  // are the sides of one rectangle touching the other?
+  // is one rectagle fully in the other one?
 
   if(r1x+r1w/2 <= r2x+r2w/2 &&
     r1x-r1w/2 >= r2x-r2w/2 &&
