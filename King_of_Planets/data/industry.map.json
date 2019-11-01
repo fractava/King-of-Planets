@@ -1,9 +1,9 @@
 {
   "obstacles": [
-    {"x": 32, "y": 0, "width": 8, "height": 48, "color": #696969},
-    {"x": -32, "y": 0, "width": 8, "height": 48},
-    {"x": -96, "y": 0, "width": 8, "height": 32},
-    {"x": 96, "y": 0, "width": 8, "height": 32},
+    {"x": 32, "y": 0, "width": 8, "height": 48, "color": "#696969"},
+    {"x": -32, "y": 0, "width": 8, "height": 48, "color": "#696969"},
+    {"x": -96, "y": 0, "width": 8, "height": 32, "color": "#696969"},
+    {"x": 96, "y": 0, "width": 8, "height": 32, "color": "#696969"},
   ],
   "width": 256,
   "height": 128,
