@@ -6,6 +6,7 @@
     {"x": 96, "y": 0, "width": 8, "height": 32},
   ],
   "width": 256,
-  "height": 128
+  "height": 128,
+  "backgroundImage": "Industry.png"
 }
   
