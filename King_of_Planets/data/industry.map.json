@@ -1,0 +1,11 @@
+{
+  "obstacles": [
+    {x: 32, y: 0, width: 8, height: 48},
+    {x: -32, y: 0, width: 8, height: 48},
+    {x: -96, y: 0, width: 8, height: 32},
+    {x: 96, y: 0, width: 8, height: 32},
+  ],
+  width: 512,
+  height: 256
+}
+  
