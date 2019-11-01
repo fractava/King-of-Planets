@@ -1,13 +1,16 @@
-void draw(){
+void draw() {
   game.loop();
 }
-void mouseReleased(){
+
+void mouseReleased() {
   game.click();
 }
-void keyPressed(){
+
+void keyPressed() {
   game.keyPressed();
 }
-void keyReleased(){
+
+void keyReleased() {
   game.keyReleased();
 }
 
@@ -21,15 +24,15 @@ boolean mouseIsInsideBoundingBox(BoundingBox ThisBoundingBox) {
   return (mouseX > lowX && mouseX < highX && mouseY > lowY && mouseY < highY);
 }
 
-boolean pointRect(float x, float y, float rectX, float rectY, float rectWidth, float rectHeight){
-  if(x >= rectX-rectWidth/2 &&
+boolean pointRect(float x, float y, float rectX, float rectY, float rectWidth, float rectHeight) {
+  if (x >= rectX-rectWidth/2 &&
     x <= rectX+rectWidth/2 &&
     y >= rectY-rectHeight/2 &&
-    y <= rectY+rectHeight/2){
-      return true;
-    }else{
-      return false;
-    }
+    y <= rectY+rectHeight/2) {
+    return true;
+  } else {
+    return false;
+  }
 }
 
 
@@ -74,18 +77,18 @@ boolean rectInRect(float r1x, float r1y, float r1w, float r1h, float r2x, float 
 
   // is one rectagle fully in the other one?
 
-  if(r1x+r1w/2 <= r2x+r2w/2 &&
+  if (r1x+r1w/2 <= r2x+r2w/2 &&
     r1x-r1w/2 >= r2x-r2w/2 &&
     r1y+r1h/2 <= r2y+r2h/2 &&
-    r1y-r1w/2 >= r2y-r2h/2){
-      return true;
-    }
+    r1y-r1w/2 >= r2y-r2h/2) {
+    return true;
+  }
   return false;
 }
 
 public class zIndexComparator implements Comparator<Object> {
-    @Override
+  @Override
     public int compare(Object Object1, Object Object2) {
-        return Object1.zIndex - Object2.zIndex;
-    }
+    return Object1.zIndex - Object2.zIndex;
+  }
 }

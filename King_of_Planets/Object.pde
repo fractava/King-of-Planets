@@ -1,6 +1,10 @@
-abstract class Object{
+abstract class Object {
   abstract void render();
+
   abstract BoundingBox getBoundingBox();
-  void click(){}
+
+  void click() {
+  }
+
   int zIndex = 1;
 }

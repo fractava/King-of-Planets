@@ -3,13 +3,14 @@ import java.util.Collections;
 
 Game game = new Game();
 
-void settings(){
+void settings() {
   float windowScale = 0.5;
   int width = int(1920*windowScale);
   int height = int(1080*windowScale);
-  size(width,height,P2D);
+  size(width, height, P2D);
 }
-void setup(){
+
+void setup() {
   surface.setResizable(true);
   hint(DISABLE_TEXTURE_MIPMAPS);
   ((PGraphicsOpenGL)g).textureSampling(3);

@@ -1,22 +1,21 @@
-abstract class Entity{
+abstract class Entity {
   int teamId;
   PVector position;
   int ownerId;
 
-  void update(){
+  void update() {
     //TODO remove this function and process every entity on server
   }
 
-  void show(){
-
+  void show() {
   }
 }
 
-class Admiral_Oculus_Shot extends Entity{
+class AdmiralOculusShot extends Entity {
   PVector direction;
   float speed;
 
-  Admiral_Oculus_Shot(int newOwnerId, int newTeamId, PVector startPosition, PVector startDirection){
+  AdmiralOculusShot(int newOwnerId, int newTeamId, PVector startPosition, PVector startDirection) {
     speed = 8;
     ownerId = newOwnerId;
     teamId = newTeamId;
@@ -25,21 +24,22 @@ class Admiral_Oculus_Shot extends Entity{
     direction.setMag(speed);
   }
 
-  void update(){position.add(direction);
+  void update() {
+    position.add(direction);
 
-    for(int i = 3-teamId*3; i < 6-teamId*3; i++){
-      if(pointRect(position.x, position.y, game.match.players[i].position.x, game.match.players[i].position.y, game.match.players[i].w, game.match.players[i].h)){
+    for (int i = 3-teamId*3; i < 6-teamId*3; i++) {
+      if (pointRect(position.x, position.y, game.match.players[i].position.x, game.match.players[i].position.y, game.match.players[i].w, game.match.players[i].h)) {
         game.match.players[i].addHealth(-70);
         game.match.entities.remove(this);
       }
     }
 
-    if(game.match.currentMap.collides(position,2,2)){
+    if (game.match.currentMap.collides(position, 2, 2)) {
       game.match.entities.remove(this);
     }
   }
 
-  void show(){
+  void show() {
     pushStyle();
     noStroke();
     fill(0);
@@ -49,14 +49,14 @@ class Admiral_Oculus_Shot extends Entity{
   }
 }
 
-class Ashas_Fire extends Entity{
+class AshasFire extends Entity {
   int startFrame;
   int duration = 15;
   PVector direction;
   float speed = 0.7;
   PImage texture;
 
-  Ashas_Fire(int newOwnerId, int newTeamId, PVector startPosition, PVector startDirection){
+  AshasFire(int newOwnerId, int newTeamId, PVector startPosition, PVector startDirection) {
     ownerId = newOwnerId;
     teamId = newTeamId;
     startFrame = frameCount;
@@ -65,9 +65,9 @@ class Ashas_Fire extends Entity{
     direction = startDirection;
   }
 
-  void update(){
-    for(int i = 3-teamId*3; i < 6-teamId*3; i++){
-      if(rectRect(position.x, position.y, 14, 14, game.match.players[i].position.x, game.match.players[i].position.y, game.match.players[i].w, game.match.players[i].h)){
+  void update() {
+    for (int i = 3-teamId*3; i < 6-teamId*3; i++) {
+      if (rectRect(position.x, position.y, 14, 14, game.match.players[i].position.x, game.match.players[i].position.y, game.match.players[i].w, game.match.players[i].h)) {
         game.match.players[i].addHealth(-2);
       }
     }
@@ -75,28 +75,28 @@ class Ashas_Fire extends Entity{
     direction.setMag(speed);
     position.add(direction);
 
-    if(frameCount - startFrame > duration){
+    if (frameCount - startFrame > duration) {
       game.match.entities.remove(this);
     }
 
-    if(game.match.currentMap.collides(position,14,14)){
+    if (game.match.currentMap.collides(position, 14, 14)) {
       game.match.entities.remove(this);
     }
   }
 
-  void show(){
+  void show() {
     pushStyle();
     imageMode(CENTER);
-    image(texture, position.x, position.y, 16,16);
+    image(texture, position.x, position.y, 16, 16);
     popStyle();
   }
 }
 
-class Athon_Orb extends Entity{
+class AthonOrb extends Entity {
   PVector direction;
   float speed;
 
-  Athon_Orb(int newOwnerId, int newTeamId, PVector startPosition, PVector startDirection){
+  AthonOrb(int newOwnerId, int newTeamId, PVector startPosition, PVector startDirection) {
     speed = 4;
     ownerId = newOwnerId;
     teamId = newTeamId;
@@ -105,23 +105,23 @@ class Athon_Orb extends Entity{
     direction.setMag(speed);
   }
 
-  void update(){
+  void update() {
     position.add(direction);
 
-    for(int i = teamId*3; i < 3+teamId*3; i++){
-      if(i != ownerId && rectRect(position.x, position.y, 2, 2, game.match.players[i].position.x, game.match.players[i].position.y, game.match.players[i].w, game.match.players[i].h)){
+    for (int i = teamId*3; i < 3+teamId*3; i++) {
+      if (i != ownerId && rectRect(position.x, position.y, 2, 2, game.match.players[i].position.x, game.match.players[i].position.y, game.match.players[i].w, game.match.players[i].h)) {
         game.match.players[i].addHealth(30);
         game.match.players[ownerId].addHealth(15);
         game.match.entities.remove(this);
       }
     }
 
-    if(game.match.currentMap.collides(position,3,3)){
+    if (game.match.currentMap.collides(position, 3, 3)) {
       game.match.entities.remove(this);
     }
   }
 
-  void show(){
+  void show() {
     pushStyle();
     noStroke();
     fill(#ffdf7d);
@@ -131,43 +131,43 @@ class Athon_Orb extends Entity{
   }
 }
 
-class Burac_Fire extends Entity{
+class BuracFire extends Entity {
   int radius = 11;
   PImage texture;
 
-  Burac_Fire(int newOwnerId, int newTeamId, PVector startPosition){
+  BuracFire(int newOwnerId, int newTeamId, PVector startPosition) {
     ownerId = newOwnerId;
     teamId = newTeamId;
     position = new PVector(startPosition.x, startPosition.y);
     texture = loadImage("Fire Circle.png");
   }
 
-  void update(){
+  void update() {
     position = game.match.players[ownerId].position;
     radius++;
-    for(int i = 3-teamId*3; i < 6-teamId*3; i++){
-      if(circleRect(position.x, position.y, radius/2, game.match.players[i].position.x, game.match.players[i].position.y, game.match.players[i].w, game.match.players[i].h)){
+    for (int i = 3-teamId*3; i < 6-teamId*3; i++) {
+      if (circleRect(position.x, position.y, radius/2, game.match.players[i].position.x, game.match.players[i].position.y, game.match.players[i].w, game.match.players[i].h)) {
         game.match.players[i].addHealth(-6);
       }
     }
-    if(radius >= 24){
+    if (radius >= 24) {
       game.match.entities.remove(this);
     }
   }
 
-  void show(){
+  void show() {
     pushStyle();
     imageMode(CENTER);
-    image(texture,position.x,position.y,radius,radius);
+    image(texture, position.x, position.y, radius, radius);
     popStyle();
   }
 }
 
-class Kinetic_Shot extends Entity{
+class KineticShot extends Entity {
   float speed;
   PVector direction;
 
-  Kinetic_Shot(int newOwnerId, int newTeamId, PVector startPosition, PVector startDirection){
+  KineticShot(int newOwnerId, int newTeamId, PVector startPosition, PVector startDirection) {
     speed = 5;
     ownerId = newOwnerId;
     teamId = newTeamId;
@@ -176,26 +176,26 @@ class Kinetic_Shot extends Entity{
     direction.setMag(speed);
   }
 
-  void update(){
+  void update() {
     position.add(direction);
 
-    for(int i = 3-teamId*3; i < 6-teamId*3; i++){
-      if(rectRect(position.x, position.y, 2, 2, game.match.players[i].position.x, game.match.players[i].position.y, game.match.players[i].w, game.match.players[i].h)){
+    for (int i = 3-teamId*3; i < 6-teamId*3; i++) {
+      if (rectRect(position.x, position.y, 2, 2, game.match.players[i].position.x, game.match.players[i].position.y, game.match.players[i].w, game.match.players[i].h)) {
         game.match.players[i].addHealth(-10);
         game.match.players[ownerId].addHealth(10);
         game.match.entities.remove(this);
       }
     }
-    if(game.match.currentMap.collides(position,2,2)){
+    if (game.match.currentMap.collides(position, 2, 2)) {
       game.match.entities.remove(this);
     }
   }
 
-  void show(){
+  void show() {
     pushStyle();
     noStroke();
     fill(#ff3318);
-    if(int(frameCount/3)%2 == 0){
+    if (int(frameCount/3)%2 == 0) {
       fill(#8aff00);
     }
     rectMode(CENTER);
@@ -204,11 +204,11 @@ class Kinetic_Shot extends Entity{
   }
 }
 
-class Vrachos_Shot extends Entity{
+class VrachosShot extends Entity {
   PVector direction;
   float speed;
 
-  Vrachos_Shot(int newOwnerId, int newTeamId, PVector startPosition, PVector startDirection){
+  VrachosShot(int newOwnerId, int newTeamId, PVector startPosition, PVector startDirection) {
     speed = 2.5;
     ownerId = newOwnerId;
     teamId = newTeamId;
@@ -217,21 +217,21 @@ class Vrachos_Shot extends Entity{
     direction.setMag(speed);
   }
 
-  void update(){
+  void update() {
     position.add(direction);
 
-    for(int i = 3-teamId*3; i < 6-teamId*3; i++){
-      if(rectRect(position.x, position.y, 4, 4, game.match.players[i].position.x, game.match.players[i].position.y, game.match.players[i].w, game.match.players[i].h)){
+    for (int i = 3-teamId*3; i < 6-teamId*3; i++) {
+      if (rectRect(position.x, position.y, 4, 4, game.match.players[i].position.x, game.match.players[i].position.y, game.match.players[i].w, game.match.players[i].h)) {
         game.match.players[i].addHealth(-40);
         game.match.entities.remove(this);
       }
     }
-    if(game.match.currentMap.collides(position,4,4)){
+    if (game.match.currentMap.collides(position, 4, 4)) {
       game.match.entities.remove(this);
     }
   }
 
-  void show(){
+  void show() {
     pushStyle();
     noStroke();
     fill(#0090ff);
