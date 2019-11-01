@@ -1,6 +1,5 @@
-class Admiral_Oculus extends Hero{
-
-  Admiral_Oculus(int newTeamId, float startX, float startY){
+class AdmiralOculus extends Hero {
+  AdmiralOculus(int newTeamId, float startX, float startY) {
     teamId = newTeamId;
     position = new PVector(startX, startY);
     cover = loadImage("Admiral Oculus.png");
@@ -11,15 +10,15 @@ class Admiral_Oculus extends Hero{
     health = maxHealth;
   }
 
-  void first(){
+  void first() {
     //TODO send request to server with data of new entity
-    game.match.entities.add(new Admiral_Oculus_Shot(game.match.playerId, teamId, position, direction));
+    game.match.entities.add(new AdmiralOculusShot(game.match.playerId, teamId, position, direction));
     lastFirst = frameCount;
   }
 }
 
-class Ashas extends Hero{
-  Ashas(int newTeamId, float startX, float startY){
+class Ashas extends Hero {
+  Ashas(int newTeamId, float startX, float startY) {
     teamId = newTeamId;
     position = new PVector(startX, startY);
     cover = loadImage("Ashas.png");
@@ -32,16 +31,16 @@ class Ashas extends Hero{
     health = maxHealth;
   }
 
-  void first(){
+  void first() {
     //TODO send request to server with data of new entity
     PVector firePosition = new PVector(position.x+direction.setMag(12).x, position.y+direction.setMag(16).y);
-    game.match.entities.add(new Ashas_Fire(game.match.playerId, teamId, firePosition, direction));
+    game.match.entities.add(new AshasFire(game.match.playerId, teamId, firePosition, direction));
     lastFirst = frameCount;
   }
 }
 
-class Athon extends Hero{
-  Athon(int newTeamId, float startX, float startY){
+class Athon extends Hero {
+  Athon(int newTeamId, float startX, float startY) {
     teamId = newTeamId;
     position = new PVector(startX, startY);
     cover = loadImage("Athon.png");
@@ -54,15 +53,15 @@ class Athon extends Hero{
     health = maxHealth;
   }
 
-  void first(){
+  void first() {
     //TODO send request to server with data of new entity
-    game.match.entities.add(new Athon_Orb(game.match.playerId, teamId, position, direction));
+    game.match.entities.add(new AthonOrb(game.match.playerId, teamId, position, direction));
     lastFirst = frameCount;
   }
 }
 
-class Burac extends Hero{
-  Burac(int newTeamId, float startX, float startY){
+class Burac extends Hero {
+  Burac(int newTeamId, float startX, float startY) {
     teamId = newTeamId;
     position = new PVector(startX, startY);
     cover = loadImage("Burac.png");
@@ -75,15 +74,15 @@ class Burac extends Hero{
     health = maxHealth;
   }
 
-  void first(){
+  void first() {
     //TODO send request to server with data of new entity
-    game.match.entities.add(new Burac_Fire(game.match.playerId, teamId, position));
+    game.match.entities.add(new BuracFire(game.match.playerId, teamId, position));
     lastFirst = frameCount;
   }
 }
 
-class Kinetic extends Hero{
-  Kinetic(int newTeamId, float startX, float startY){
+class Kinetic extends Hero {
+  Kinetic(int newTeamId, float startX, float startY) {
     teamId = newTeamId;
     position = new PVector(startX, startY);
     cover = loadImage("Kinetic.png");
@@ -94,15 +93,15 @@ class Kinetic extends Hero{
     health = maxHealth;
   }
 
-  void first(){
+  void first() {
     //TODO send request to server with data of new entity
-    game.match.entities.add(new Kinetic_Shot(game.match.playerId, teamId, position, direction));
+    game.match.entities.add(new KineticShot(game.match.playerId, teamId, position, direction));
     lastFirst = frameCount;
   }
 }
 
-class Vrachos extends Hero{
-  Vrachos(int newTeamId, float startX, float startY){
+class Vrachos extends Hero {
+  Vrachos(int newTeamId, float startX, float startY) {
     teamId = newTeamId;
     position = new PVector(startX, startY);
     cover = loadImage("Vrachos.png");
@@ -113,9 +112,9 @@ class Vrachos extends Hero{
     health = maxHealth;
   }
 
-  void first(){
+  void first() {
     //TODO send request to server with data of new entity
-    game.match.entities.add(new Vrachos_Shot(game.match.playerId, teamId, position, direction));
+    game.match.entities.add(new VrachosShot(game.match.playerId, teamId, position, direction));
     lastFirst = frameCount;
   }
 }

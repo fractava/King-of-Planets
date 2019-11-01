@@ -1,4 +1,4 @@
-class Game{
+class Game {
   ArrayList<Screen> Screens = new ArrayList<Screen>();
   int currentScreenId = 0;
 
@@ -7,25 +7,30 @@ class Game{
 
   Match match;
 
-  void init(){
+  void init() {
     Screens.add(new MainScreen());
     PFont font;
     font = createFont("origa.ttf", 20);
     textFont(font);
   }
-  void loop(){
+  
+  void loop() {
     Screens.get(currentScreenId).render();
   }
-  void click(){
+  
+  void click() {
     Screens.get(currentScreenId).click();
   }
-  void keyPressed(){
+  
+  void keyPressed() {
     Screens.get(currentScreenId).keyPressed();
   }
-  void keyReleased(){
+  
+  void keyReleased() {
     Screens.get(currentScreenId).keyReleased();
   }
-  Screen getScreen(int id){
+  
+  Screen getScreen(int id) {
     return(Screens.get(id));
   }
 }
