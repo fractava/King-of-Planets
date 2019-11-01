@@ -9,11 +9,11 @@ class Match{
   Match(Map newMap){
     currentMap = newMap;
     for(int i = 0; i < 3; i ++){
-      players[i] = new Athon(0,0,0);
+      players[i] = new Ashas(0,0,0);
       players[i].spawn();
     }
     for(int i = 3; i < 6; i ++){
-      players[i] = new Vrachos(1,0,0);
+      players[i] = new Admiral_Oculus(1,0,0);
       players[i].spawn();
     }
     points[0] = 0;

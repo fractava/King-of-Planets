@@ -31,6 +31,7 @@ class Admiral_Oculus_Shot extends Entity{
       if(pointRect(position.x, position.y, game.match.players[i].position.x, game.match.players[i].position.y, game.match.players[i].w, game.match.players[i].h)){
         game.match.players[i].addHealth(-70);
         game.match.entities.remove(this);
+        break;
       }
     }
 
@@ -68,7 +69,7 @@ class Ashas_Fire extends Entity{
   void update(){
     for(int i = 3-teamId*3; i < 6-teamId*3; i++){
       if(rectRect(position.x, position.y, 14, 14, game.match.players[i].position.x, game.match.players[i].position.y, game.match.players[i].w, game.match.players[i].h)){
-        game.match.players[i].addHealth(-2);
+        game.match.players[i].addHealth(-4);
       }
     }
 
@@ -184,6 +185,7 @@ class Kinetic_Shot extends Entity{
         game.match.players[i].addHealth(-10);
         game.match.players[ownerId].addHealth(10);
         game.match.entities.remove(this);
+        break;
       }
     }
     if(game.match.currentMap.collides(position,2,2)){
@@ -224,6 +226,7 @@ class Vrachos_Shot extends Entity{
       if(rectRect(position.x, position.y, 4, 4, game.match.players[i].position.x, game.match.players[i].position.y, game.match.players[i].w, game.match.players[i].h)){
         game.match.players[i].addHealth(-40);
         game.match.entities.remove(this);
+        break;
       }
     }
     if(game.match.currentMap.collides(position,4,4)){

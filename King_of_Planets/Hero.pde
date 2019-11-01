@@ -13,7 +13,7 @@ class Hero{
   int health;
 
   void update(){
-    if(health >= 0){
+    if(health <= 0){
       die();
     }
     if(health > maxHealth){
@@ -32,7 +32,10 @@ class Hero{
   }
 
   void die(){
-
+    //TODO send server point for other team
+    health = maxHealth;
+    game.match.points[int(!boolean(teamId))]++;
+    spawn();
   }
 
   void control(){
@@ -75,7 +78,6 @@ class Hero{
   }
 
   void first(){
-
   }
 
   void show(){
