@@ -1,12 +1,12 @@
 abstract class Map{
-  int x, y;
+  int width, height;
   PImage backgroundImage;
   ArrayList<Obstacle> obstacles = new ArrayList<Obstacle>();
 
   abstract void show();
 
   boolean collides(PVector position, int w, int h){
-    if(rectInRect(position.x,position.y,w,h,0,0,x/2,y/2) == false){
+    if(rectInRect(position.x,position.y,w,h,0,0,width,height) == false){
       return true;
     }
     for(int i = 0; i < obstacles.size(); i++){
@@ -20,8 +20,8 @@ abstract class Map{
 
 class Industry extends Map{
   Industry(){
-    x = 512;
-    y = 256;
+    width = 256;
+    height = 128;
     backgroundImage = loadImage("Industry.png");
 
     obstacles.add(new Obstacle(32,0,8,48, #696969));
