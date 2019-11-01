@@ -1,6 +1,7 @@
 class Match{
   Map currentMap;
   Hero[] players = new Hero[6];
+  ArrayList<Entity> entities = new ArrayList<Entity>();
   int[] points = new int[2];
   int playerId = 0;
   boolean[] controls = new boolean[4];
@@ -20,6 +21,11 @@ class Match{
   }
 
   void update(){
+    //TODO get the entity positions from server
+    for(int i = 0; i < entities.size(); i++){
+      entities.get(i).update();
+    }
+    //TODO get players heroes, positions and directions from server
     for(int i = 0; i < 6; i++){
       players[i].update();
     }
@@ -33,6 +39,9 @@ class Match{
     scale(height/64);
     translate(-players[playerId].position.x, -players[playerId].position.y);
     currentMap.show();
+    for(int i = 0; i < entities.size(); i++){
+      entities.get(i).show();
+    }
     for(int i = 0; i < 6; i++){
       players[i].show();
     }

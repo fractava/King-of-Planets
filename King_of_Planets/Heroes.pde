@@ -12,7 +12,8 @@ class Admiral_Oculus extends Hero{
   }
 
   void first(){
-    entities.add(new Admiral_Oculus_Shot(game.match.playerId, teamId, position, direction));
+    //TODO send request to server with data of new entity
+    game.match.entities.add(new Admiral_Oculus_Shot(game.match.playerId, teamId, position, direction));
     lastFirst = frameCount;
   }
 }
@@ -32,8 +33,9 @@ class Ashas extends Hero{
   }
 
   void first(){
+    //TODO send request to server with data of new entity
     PVector firePosition = new PVector(position.x+direction.setMag(12).x, position.y+direction.setMag(16).y);
-    entities.add(new Ashas_Fire(game.match.playerId, teamId, firePosition, direction));
+    game.match.entities.add(new Ashas_Fire(game.match.playerId, teamId, firePosition, direction));
     lastFirst = frameCount;
   }
 }
@@ -53,7 +55,8 @@ class Athon extends Hero{
   }
 
   void first(){
-    entities.add(new Athon_Orb(game.match.playerId, teamId, position, direction));
+    //TODO send request to server with data of new entity
+    game.match.entities.add(new Athon_Orb(game.match.playerId, teamId, position, direction));
     lastFirst = frameCount;
   }
 }
@@ -73,7 +76,8 @@ class Burac extends Hero{
   }
 
   void first(){
-    entities.add(new Burac_Fire(game.match.playerId, teamId, position));
+    //TODO send request to server with data of new entity
+    game.match.entities.add(new Burac_Fire(game.match.playerId, teamId, position));
     lastFirst = frameCount;
   }
 }
@@ -91,7 +95,8 @@ class Kinetic extends Hero{
   }
 
   void first(){
-    entities.add(new Kinetic_Shot(game.match.playerId, teamId, position, direction));
+    //TODO send request to server with data of new entity
+    game.match.entities.add(new Kinetic_Shot(game.match.playerId, teamId, position, direction));
     lastFirst = frameCount;
   }
 }
@@ -109,7 +114,8 @@ class Vrachos extends Hero{
   }
 
   void first(){
-    entities.add(new Vrachos_Shot(game.match.playerId, teamId, position, direction));
+    //TODO send request to server with data of new entity
+    game.match.entities.add(new Vrachos_Shot(game.match.playerId, teamId, position, direction));
     lastFirst = frameCount;
   }
 }

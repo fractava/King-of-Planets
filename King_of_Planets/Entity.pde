@@ -4,7 +4,7 @@ abstract class Entity{
   int ownerId;
 
   void update(){
-
+    //TODO remove this function and process every entity on server
   }
 
   void show(){
@@ -25,18 +25,17 @@ class Admiral_Oculus_Shot extends Entity{
     direction.setMag(speed);
   }
 
-  void update(){
-    position.add(direction);
+  void update(){position.add(direction);
 
     for(int i = 3-teamId*3; i < 6-teamId*3; i++){
       if(pointRect(position.x, position.y, game.match.players[i].position.x, game.match.players[i].position.y, game.match.players[i].w, game.match.players[i].h)){
         game.match.players[i].addHealth(-70);
-        game.match.players[ownerId].entities.remove(this);
+        game.match.entities.remove(this);
       }
     }
 
     if(game.match.currentMap.collides(position,2,2)){
-      game.match.players[ownerId].entities.remove(this);
+      game.match.entities.remove(this);
     }
   }
 
@@ -77,11 +76,11 @@ class Ashas_Fire extends Entity{
     position.add(direction);
 
     if(frameCount - startFrame > duration){
-      game.match.players[ownerId].entities.remove(this);
+      game.match.entities.remove(this);
     }
 
     if(game.match.currentMap.collides(position,14,14)){
-      game.match.players[ownerId].entities.remove(this);
+      game.match.entities.remove(this);
     }
   }
 
@@ -113,12 +112,12 @@ class Athon_Orb extends Entity{
       if(i != ownerId && rectRect(position.x, position.y, 2, 2, game.match.players[i].position.x, game.match.players[i].position.y, game.match.players[i].w, game.match.players[i].h)){
         game.match.players[i].addHealth(30);
         game.match.players[ownerId].addHealth(15);
-        game.match.players[ownerId].entities.remove(this);
+        game.match.entities.remove(this);
       }
     }
 
     if(game.match.currentMap.collides(position,3,3)){
-      game.match.players[ownerId].entities.remove(this);
+      game.match.entities.remove(this);
     }
   }
 
@@ -152,7 +151,7 @@ class Burac_Fire extends Entity{
       }
     }
     if(radius >= 24){
-      game.match.players[ownerId].entities.remove(this);
+      game.match.entities.remove(this);
     }
   }
 
@@ -184,11 +183,11 @@ class Kinetic_Shot extends Entity{
       if(rectRect(position.x, position.y, 2, 2, game.match.players[i].position.x, game.match.players[i].position.y, game.match.players[i].w, game.match.players[i].h)){
         game.match.players[i].addHealth(-10);
         game.match.players[ownerId].addHealth(10);
-        game.match.players[ownerId].entities.remove(this);
+        game.match.entities.remove(this);
       }
     }
     if(game.match.currentMap.collides(position,2,2)){
-      game.match.players[ownerId].entities.remove(this);
+      game.match.entities.remove(this);
     }
   }
 
@@ -224,11 +223,11 @@ class Vrachos_Shot extends Entity{
     for(int i = 3-teamId*3; i < 6-teamId*3; i++){
       if(rectRect(position.x, position.y, 4, 4, game.match.players[i].position.x, game.match.players[i].position.y, game.match.players[i].w, game.match.players[i].h)){
         game.match.players[i].addHealth(-40);
-        game.match.players[ownerId].entities.remove(this);
+        game.match.entities.remove(this);
       }
     }
     if(game.match.currentMap.collides(position,4,4)){
-      game.match.players[ownerId].entities.remove(this);
+      game.match.entities.remove(this);
     }
   }
 
