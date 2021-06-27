@@ -3,19 +3,23 @@ class Match{
   Hero[] players = new Hero[6];
   ArrayList<Entity> entities = new ArrayList<Entity>();
   int[] points = new int[2];
+
   int playerId = 0;
+  //TODO get playerID from Server
+
   boolean[] controls = new boolean[4];
 
   Match(Map newMap){
     currentMap = newMap;
     for(int i = 0; i < 3; i ++){
-      players[i] = new Ashas(0,0,0);
+      players[i] = assignHero(0, 0, 0, 0);
       players[i].spawn();
     }
     for(int i = 3; i < 6; i ++){
-      players[i] = new Admiral_Oculus(1,0,0);
+      players[i] = assignHero(1, 1, 0, 0);
       players[i].spawn();
     }
+    players[playerId] = assignHero(game.selectedHero, 0, 0, 0);
     points[0] = 0;
     points[1] = 0;
   }
@@ -56,5 +60,24 @@ class Match{
     fill(#7b004b);
     text(points[1], width/2-width/16, height/16);
     popStyle();
+  }
+
+  Hero assignHero(int heroId, int teamId, int x, int y){
+    switch(heroId){
+      case 0:
+        return new Admiral_Oculus(teamId, x, y);
+      case 1:
+        return new Ashas(teamId, x, y);
+      case 2:
+        return new Athon(teamId, x, y);
+      case 3:
+        return new Burac(teamId, x ,y);
+      case 4:
+        return new Kinetic(teamId, x, y);
+      case 5:
+        return new Vrachos(teamId, x, y);
+      default:
+        return new Ashas(teamId, x, y);
+    }
   }
 }
